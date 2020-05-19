@@ -50,13 +50,16 @@ def create_top_level_category(name):
     auth_head = {
         'X-Client-Id': api_client_id,
         'X-Auth-Token': auth_token,
-        'Content-Type': 'application/json'
+        'Content-Type': 'application/json',
     }
 
-    data = {
-        'name': name
-    }
+    data = '{\n       "name": \"'+name+'\"\n     }'
 
     response = requests.post('https://vzaar.com/api/v2/categories', headers=auth_head, data=data)
     print(response.status_code)
+    if response.status_code == 201:
+        print("successfully created top level category")
+        print(data)
+    else:
+        print("command failed: see response code for more information")
 
