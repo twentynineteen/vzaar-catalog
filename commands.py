@@ -1,7 +1,4 @@
-from secret_key import api_client_id
-from secret_key import auth_token
-from secret_key import login
-from secret_key import password
+from secret_key import *
 
 import requests
 import pprint
@@ -63,3 +60,24 @@ def create_top_level_category(name):
     else:
         print("command failed: see response code for more information")
 
+def create_subcategory(name, parent_id):
+    '''Use this to create a subcategory.
+    Reserved for modules and year / occasion.
+    
+    name parameter must be a string.'''
+
+    auth_head = {
+        'X-Client-Id': api_client_id,
+        'X-Auth-Token': auth_token,
+        'Content-Type': 'application/json',
+    }
+
+    data = '{\n       "name": \"' + name + '\",\n       "parent_id": \"' + str(parent_id) + '\"\n     }'
+
+    response = requests.post('https://vzaar.com/api/v2/categories', headers=auth_head, data=data)
+    print(response.status_code)
+    if response.status_code == 201:
+        print("successfully created subcategory")
+        print(data)
+    else:
+        print("command failed: see response code for more information")
