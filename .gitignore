@@ -1624,3 +1624,4 @@ vzaarcategories/lib/python3.7/site-packages/wrapt-1.12.1.dist-info/top_level.txt
 vzaarcategories/lib/python3.7/site-packages/wrapt-1.12.1.dist-info/WHEEL
 __pycache__/secret_key.cpython-37.pyc
 __pycache__/secret_key.cpython-38.pyc
+__pycache__/commands.cpython-37.pyc
