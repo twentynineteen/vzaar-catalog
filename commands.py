@@ -10,8 +10,11 @@ headers = {
 
 pp = pprint.PrettyPrinter(indent=4)
 
-def list_videos(q=''):
-    '''This makes an API call to vzaar and lists all videos in account'''
+def list_videos(q='', sort='created_at', order='asc', page=1, per_page=100, tag="", category_id=None):
+    '''This makes an API call to vzaar and lists all videos in account.
+    Parameters set to standard search of 100 videos per page. Use q param to do a text search.
+    
+    '''
 
     response = requests.get('https://api.vzaar.com/api/v2/videos', headers=headers)
 
